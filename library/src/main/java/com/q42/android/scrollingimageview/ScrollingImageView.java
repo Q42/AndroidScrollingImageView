@@ -1,4 +1,4 @@
-package com.q42.parallaxview;
+package com.q42.android.scrollingimageview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
