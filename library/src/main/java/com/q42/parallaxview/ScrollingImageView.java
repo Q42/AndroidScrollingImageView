@@ -15,7 +15,7 @@ import static java.lang.Math.floor;
 /**
  * Created by thijs on 08-06-15.
  */
-public class ParallaxView extends View {
+public class ScrollingImageView extends View {
     private final int speed;
     private final Bitmap bitmap;
 
@@ -24,7 +24,7 @@ public class ParallaxView extends View {
 
     private boolean isStarted;
 
-    public ParallaxView(Context context, AttributeSet attrs) {
+    public ScrollingImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ParallaxView, 0, 0);
         try {
