@@ -63,9 +63,8 @@ public class ScrollingImageView extends View {
             left += layerWidth;
         }
 
-        offset -= speed;
-
         if (isStarted) {
+            offset -= speed;
             postInvalidateOnAnimation();
         }
     }
