@@ -20,7 +20,7 @@ public class ScrollingImageView extends View {
     private final Bitmap bitmap;
 
     private Rect clipBounds = new Rect();
-    private int offset = 0;
+    private float offset = 0;
 
     private boolean isStarted;
 
@@ -51,30 +51,29 @@ public class ScrollingImageView extends View {
 
         canvas.getClipBounds(clipBounds);
 
-        int normalizedOffset = offset;
-        int layerWidth = bitmap.getWidth();
+        float layerWidth = bitmap.getWidth();
         if (offset < -layerWidth) {
-            offset += (int) (floor(abs(normalizedOffset) / (float) layerWidth) * layerWidth);
+            offset += (floor(abs(offset) / layerWidth) * layerWidth);
         }
 
-        int left = offset;
+        float left = offset;
         while (left < clipBounds.width()) {
             canvas.drawBitmap(bitmap, getBitmapLeft(layerWidth, left), 0, null);
             left += layerWidth;
         }
 
         if (isStarted) {
-            offset -= speed;
+            offset -= abs(speed);
             postInvalidateOnAnimation();
         }
     }
 
-    private float getBitmapLeft(int layerWidth, int left) {
-        float bitmapLeft = left;
+    private float getBitmapLeft(float layerWidth, float left) {
         if (speed < 0) {
-            bitmapLeft = clipBounds.width() - layerWidth - left;
+            return clipBounds.width() - layerWidth - left;
+        } else {
+            return left;
         }
-        return bitmapLeft;
     }
 
     /**
