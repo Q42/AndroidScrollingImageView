@@ -36,7 +36,7 @@ Don't forget to add the namespace to your root XLM element
 xmlns:scrolling_image_view="http://schemas.android.com/apk/res-auto"
 ```
 
-In your Java code you can start and stop the animation like this:
+In your Java code, you can start and stop the animation like this:
 ```java
 ScrollingImageView scrollingBackground = (ScrollingImageView) loader.findViewById(R.id.scrolling_background);
 scrollingBackground.stop();
@@ -44,7 +44,7 @@ scrollingBackground.start();
 ```
 
 ## Parallax effect
-In order to achieve a parallax effect you can stack multiple `ScrollingImageView`'s in a `FrameLayout` with diffirent speeds, for example:
+In order to achieve a parallax effect, you can stack multiple `ScrollingImageView`'s in a `FrameLayout` with different speeds. For example:
 ```xml
 <FrameLayout
     android:layout_width="match_parent"
