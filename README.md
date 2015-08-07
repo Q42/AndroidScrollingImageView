@@ -16,9 +16,14 @@ repositories {
 *Step 2.* Add the dependency in the form
 ```gradle
 dependencies {
-    compile 'com.github.Q42:AndroidScrollingImageView:1.0'
+    compile 'com.github.Q42:AndroidScrollingImageView:1.1'
 }
 ```
+
+## Sample app
+Please see the sample app for some examples
+
+![Sample App](https://raw.githubusercontent.com/Q42/AndroidScrollingImageView/master/sample_app.png)
 
 ## Usage
 In your Android layout file add:
@@ -30,6 +35,10 @@ In your Android layout file add:
     scrolling_image_view:speed="1dp"
     scrolling_image_view:src="@drawable/scrolling_background" />
 ```
+
+There are two attributes for the `ScrollingImageView` namely `speed` and `src`.
+* `speed` is the number of `dp`'s to move the bitmap on each animation frame (may be a negative number)
+* `src` is the drawable to paint (**must be a bitmap!**)
 
 Don't forget to add the namespace to your root XLM element
 ```xml
