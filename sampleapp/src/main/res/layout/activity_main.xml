@@ -1,0 +1,137 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:scrolling_image_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".MainActivity">
+
+        <TextView
+            style="@style/Base.TextAppearance.AppCompat.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Right to left scrolling background" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <com.q42.android.scrollingimageview.ScrollingImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                scrolling_image_view:speed="1dp"
+                scrolling_image_view:src="@drawable/scrolling_background" />
+
+            <com.q42.android.scrollingimageview.ScrollingImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                scrolling_image_view:speed="1.9dp"
+                scrolling_image_view:src="@drawable/scrolling_foreground" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:src="@drawable/van" />
+        </FrameLayout>
+
+        <TextView
+            style="@style/Base.TextAppearance.AppCompat.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Left to right scrolling background"
+            android:layout_marginTop="30dp"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <com.q42.android.scrollingimageview.ScrollingImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                scrolling_image_view:speed="-1dp"
+                scrolling_image_view:src="@drawable/scrolling_background" />
+
+            <com.q42.android.scrollingimageview.ScrollingImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                scrolling_image_view:speed="-1.9dp"
+                scrolling_image_view:src="@drawable/scrolling_foreground" />
+        </FrameLayout>
+
+        <TextView
+            style="@style/Base.TextAppearance.AppCompat.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Landscape with tiles"
+            android:layout_marginTop="30dp"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:src="@drawable/layer_1"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:src="@drawable/layer_2" />
+
+            <com.q42.android.scrollingimageview.ScrollingImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                scrolling_image_view:speed=".3dp"
+                scrolling_image_view:src="@drawable/layer_3" />
+
+            <com.q42.android.scrollingimageview.ScrollingImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                scrolling_image_view:speed=".6dp"
+                scrolling_image_view:src="@drawable/layer_4" />
+
+            <com.q42.android.scrollingimageview.ScrollingImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                scrolling_image_view:speed=".9dp"
+                scrolling_image_view:src="@drawable/layer_5" />
+
+            <com.q42.android.scrollingimageview.ScrollingImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                scrolling_image_view:speed="1.5dp"
+                scrolling_image_view:src="@drawable/layer_6" />
+
+            <com.q42.android.scrollingimageview.ScrollingImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                scrolling_image_view:speed="1.7dp"
+                scrolling_image_view:src="@drawable/layer_7" />
+        </FrameLayout>
+    </LinearLayout>
+</ScrollView>
