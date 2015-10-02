@@ -26,6 +26,7 @@
             android:layout_marginTop="10dp">
 
             <com.q42.android.scrollingimageview.ScrollingImageView
+                android:id="@+id/thijs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="random_imgs">
+        <item>@drawable/van</item>
+        <item>@drawable/layer_7</item>
+    </array>
+</resources>

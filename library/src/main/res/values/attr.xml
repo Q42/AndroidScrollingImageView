@@ -3,5 +3,6 @@
     <declare-styleable name="ParallaxView">
         <attr name="speed" format="dimension" />
         <attr name="src" format="reference" />
+        <attr name="sceneLength" format="integer" />
     </declare-styleable>
 </resources>
