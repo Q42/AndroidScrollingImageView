@@ -18,6 +18,32 @@
             style="@style/Base.TextAppearance.AppCompat.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Random scene generator" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <com.q42.android.scrollingimageview.ScrollingImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                scrolling_image_view:speed="3dp"
+                scrolling_image_view:src="@array/random_imgs"
+                scrolling_image_view:randomness="@array/randomness" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:src="@drawable/van" />
+        </FrameLayout>
+
+        <TextView
+            style="@style/Base.TextAppearance.AppCompat.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Right to left scrolling background" />
 
         <FrameLayout
@@ -26,7 +52,6 @@
             android:layout_marginTop="10dp">
 
             <com.q42.android.scrollingimageview.ScrollingImageView
-                android:id="@+id/thijs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"

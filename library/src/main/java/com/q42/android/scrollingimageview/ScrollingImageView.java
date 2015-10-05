@@ -10,15 +10,18 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import static java.lang.Math.abs;
+import static java.util.Collections.singletonList;
 
 /**
  * Created by thijs on 08-06-15.
  */
 public class ScrollingImageView extends View {
-    private Bitmap[] bitmaps;
+    private List<Bitmap> bitmaps;
     private float speed;
     private int[] scene;
     private int arrayIndex = 0;
@@ -35,29 +38,50 @@ public class ScrollingImageView extends View {
         try {
             speed = ta.getDimension(R.styleable.ParallaxView_speed, 10);
             int sceneLength = ta.getInt(R.styleable.ParallaxView_sceneLength, 1000);
+            final int randomnessResourceId = ta.getResourceId(R.styleable.ParallaxView_randomness, 0);
+            int[] randomness = new int[0];
+            if (randomnessResourceId > 0) {
+                randomness = getResources().getIntArray(randomnessResourceId);
+            }
+
             int type = ta.peekValue(R.styleable.ParallaxView_src).type;
             if (type == TypedValue.TYPE_REFERENCE) {
                 int resourceId = ta.getResourceId(R.styleable.ParallaxView_src, 0);
                 TypedArray typedArray = getResources().obtainTypedArray(resourceId);
                 try {
-                    bitmaps = new Bitmap[typedArray.length()];
+                    int bitmapsSize = 0;
+                    for (int r : randomness) {
+                        bitmapsSize += r;
+                    }
+
+                    bitmaps = new ArrayList<>(Math.max(typedArray.length(), bitmapsSize));
+
                     for (int i = 0; i < typedArray.length(); i++) {
-                        bitmaps[i] = BitmapFactory.decodeResource(getResources(), typedArray.getResourceId(i, 0));
-                        maxBitmapHeight = Math.max(bitmaps[i].getHeight(), maxBitmapHeight);
+                        int multiplier = 1;
+                        if (randomness.length > 0 && i < randomness.length) {
+                            multiplier = Math.max(1, randomness[i]);
+                        }
+
+                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), typedArray.getResourceId(i, 0));
+                        for (int m = 0; m < multiplier; m++) {
+                            bitmaps.add(bitmap);
+                        }
+
+                        maxBitmapHeight = Math.max(bitmap.getHeight(), maxBitmapHeight);
                     }
 
                     Random random = new Random();
                     this.scene = new int[sceneLength];
                     for (int i = 0; i < this.scene.length; i++) {
-                        this.scene[i] = random.nextInt(bitmaps.length);
+                        this.scene[i] = random.nextInt(bitmaps.size());
                     }
                 } finally {
                     typedArray.recycle();
                 }
             } else if (type == TypedValue.TYPE_STRING) {
-                bitmaps = new Bitmap[]{BitmapFactory.decodeResource(getResources(), ta.getResourceId(R.styleable.ParallaxView_src, 0))};
+                bitmaps = singletonList(BitmapFactory.decodeResource(getResources(), ta.getResourceId(R.styleable.ParallaxView_src, 0)));
                 scene = new int[]{0};
-                maxBitmapHeight = bitmaps[0].getHeight();
+                maxBitmapHeight = bitmaps.get(0).getHeight();
             }
         } finally {
             ta.recycle();
@@ -100,7 +124,7 @@ public class ScrollingImageView extends View {
     }
 
     private Bitmap getBitmap(int sceneIndex) {
-        return bitmaps[scene[sceneIndex]];
+        return bitmaps.get(scene[sceneIndex]);
     }
 
     private float getBitmapLeft(float layerWidth, float left) {

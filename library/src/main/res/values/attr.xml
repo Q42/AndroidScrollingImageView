@@ -4,5 +4,6 @@
         <attr name="speed" format="dimension" />
         <attr name="src" format="reference" />
         <attr name="sceneLength" format="integer" />
+        <attr name="randomness" format="reference" />
     </declare-styleable>
 </resources>

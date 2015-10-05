@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="random_imgs">
-        <item>@drawable/van</item>
-        <item>@drawable/layer_7</item>
+        <item>@drawable/fg1</item>
+        <item>@drawable/fg2</item>
+        <item>@drawable/fg3</item>
+        <item>@drawable/fg4</item>
+        <item>@drawable/fg5</item>
+        <item>@drawable/fg6</item>
+        <item>@drawable/fg7</item>
+        <item>@drawable/fg8</item>
+        <item>@drawable/fg9</item>
     </array>
+    <integer-array name="randomness">
+        <item>1</item>
+        <item>5</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>3</item>
+    </integer-array>
 </resources>
