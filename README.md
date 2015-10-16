@@ -16,7 +16,7 @@ repositories {
 *Step 2.* Add the dependency in the form
 ```gradle
 dependencies {
-    compile 'com.github.Q42:AndroidScrollingImageView:1.1'
+    compile 'com.github.Q42:AndroidScrollingImageView:1.2'
 }
 ```
 
