@@ -11,6 +11,7 @@ import android.util.TypedValue;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -46,7 +47,7 @@ public class ScrollingImageView extends View {
                 randomness = getResources().getIntArray(randomnessResourceId);
             }
 
-            int type = ta.peekValue(R.styleable.ParallaxView_src).type;
+            int type = isInEditMode() ? TypedValue.TYPE_STRING : ta.peekValue(R.styleable.ParallaxView_src).type;
             if (type == TypedValue.TYPE_REFERENCE) {
                 int resourceId = ta.getResourceId(R.styleable.ParallaxView_src, 0);
                 TypedArray typedArray = getResources().obtainTypedArray(resourceId);
@@ -81,9 +82,14 @@ public class ScrollingImageView extends View {
                     typedArray.recycle();
                 }
             } else if (type == TypedValue.TYPE_STRING) {
-                bitmaps = singletonList(BitmapFactory.decodeResource(getResources(), ta.getResourceId(R.styleable.ParallaxView_src, 0)));
-                scene = new int[]{0};
-                maxBitmapHeight = bitmaps.get(0).getHeight();
+                final Bitmap bitmap = BitmapFactory.decodeResource(getResources(), ta.getResourceId(R.styleable.ParallaxView_src, 0));
+                if (bitmap != null) {
+                    bitmaps = singletonList(bitmap);
+                    scene = new int[]{0};
+                    maxBitmapHeight = bitmaps.get(0).getHeight();
+                } else {
+                    bitmaps = Collections.emptyList();
+                }
             }
         } finally {
             ta.recycle();
@@ -103,7 +109,7 @@ public class ScrollingImageView extends View {
     @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (canvas == null) {
+        if (canvas == null || bitmaps.isEmpty()) {
             return;
         }
 
