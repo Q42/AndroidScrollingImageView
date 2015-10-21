@@ -122,7 +122,7 @@ public class ScrollingImageView extends View {
             left += width;
         }
 
-        if (isStarted) {
+        if (isStarted && speed != 0) {
             offset -= abs(speed);
             postInvalidateOnAnimation();
         }
@@ -157,6 +157,13 @@ public class ScrollingImageView extends View {
         if (isStarted) {
             isStarted = false;
             invalidate();
+        }
+    }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
+        if (isStarted) {
+            postInvalidateOnAnimation();
         }
     }
 }
