@@ -5,5 +5,9 @@
         <attr name="src" format="reference" />
         <attr name="sceneLength" format="integer" />
         <attr name="randomness" format="reference" />
+        <attr name="initialState" format="enum">
+            <enum name="started" value="0" />
+            <enum name="stopped" value="1" />
+        </attr>
     </declare-styleable>
 </resources>

@@ -35,7 +35,9 @@ public class ScrollingImageView extends View {
     public ScrollingImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ParallaxView, 0, 0);
+        int initialState = 0;
         try {
+            initialState = ta.getInt(R.styleable.ParallaxView_initialState, 0);
             speed = ta.getDimension(R.styleable.ParallaxView_speed, 10);
             int sceneLength = ta.getInt(R.styleable.ParallaxView_sceneLength, 1000);
             final int randomnessResourceId = ta.getResourceId(R.styleable.ParallaxView_randomness, 0);
@@ -86,7 +88,10 @@ public class ScrollingImageView extends View {
         } finally {
             ta.recycle();
         }
-        start();
+
+        if (initialState == 0) {
+            start();
+        }
     }
 
     @Override
