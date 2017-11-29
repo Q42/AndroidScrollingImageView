@@ -13,10 +13,11 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 ```
+[![](https://jitpack.io/v/q42/androidscrollingimageview.svg)](https://jitpack.io/#q42/androidscrollingimageview)
 *Step 2.* Add the dependency in the form
 ```gradle
 dependencies {
-    compile 'com.github.Q42:AndroidScrollingImageView:1.2'
+    implementation 'com.github.Q42:AndroidScrollingImageView:1.3.2'
 }
 ```
 
