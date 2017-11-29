@@ -115,29 +115,31 @@ public class ScrollingImageView extends View {
 
     @Override
     public void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        if (canvas == null || bitmaps.isEmpty()) {
-            return;
-        }
+        if(!isInEditMode()) {
+            super.onDraw(canvas);
+            if (canvas == null || bitmaps.isEmpty()) {
+                return;
+            }
 
-        canvas.getClipBounds(clipBounds);
+            canvas.getClipBounds(clipBounds);
 
-        while (offset <= -getBitmap(arrayIndex).getWidth()) {
-            offset += getBitmap(arrayIndex).getWidth();
-            arrayIndex = (arrayIndex + 1) % scene.length;
-        }
+            while (offset <= -getBitmap(arrayIndex).getWidth()) {
+                offset += getBitmap(arrayIndex).getWidth();
+                arrayIndex = (arrayIndex + 1) % scene.length;
+            }
 
-        float left = offset;
-        for (int i = 0; left < clipBounds.width(); i++) {
-            Bitmap bitmap = getBitmap((arrayIndex + i) % scene.length);
-            int width = bitmap.getWidth();
-            canvas.drawBitmap(bitmap, getBitmapLeft(width, left), 0, null);
-            left += width;
-        }
+            float left = offset;
+            for (int i = 0; left < clipBounds.width(); i++) {
+                Bitmap bitmap = getBitmap((arrayIndex + i) % scene.length);
+                int width = bitmap.getWidth();
+                canvas.drawBitmap(bitmap, getBitmapLeft(width, left), 0, null);
+                left += width;
+            }
 
-        if (isStarted && speed != 0) {
-            offset -= abs(speed);
-            postInvalidateOnAnimation();
+            if (isStarted && speed != 0) {
+                offset -= abs(speed);
+                postInvalidateOnAnimation();
+            }
         }
     }
 
