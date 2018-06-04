@@ -20,7 +20,7 @@ allprojects {
 *Step 2.* Add the dependency in the form
 ```gradle
 dependencies {
-    implementation 'com.github.Q42:AndroidScrollingImageView:1.3.2'
+    implementation 'com.github.Q42:AndroidScrollingImageView:1.3.3'
 }
 ```
 
