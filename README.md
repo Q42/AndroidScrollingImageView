@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/q42/androidscrollingimageview.svg)](https://jitpack.io/#q42/androidscrollingimageview)
+
 # Scrolling Image View
 
 An Android view for displaying repeated continuous side scrolling images. This can be used to create a parallax animation effect.
@@ -15,7 +17,6 @@ allprojects {
     }
 }
 ```
-[![](https://jitpack.io/v/q42/androidscrollingimageview.svg)](https://jitpack.io/#q42/androidscrollingimageview)
 *Step 2.* Add the dependency in the form
 ```gradle
 dependencies {
