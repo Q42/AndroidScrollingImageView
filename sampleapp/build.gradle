@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "scrollingimageview.android.q42.com.sampleapp"
-        minSdkVersion 16
+        minSdkVersion 26
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
