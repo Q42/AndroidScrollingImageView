@@ -12,8 +12,6 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -58,10 +56,10 @@ public class ScrollingImageView extends View {
     private final Rect clipBounds = new Rect();
     private float offset = 0;
 
+    private static final double NANOS_PER_SECOND = 1e9;
     /** Moment when the last call to onDraw() started */
-    private static final double MICROS_PER_SECOND = 1e6;
-    private Instant lastFrameInstant = null;
-    private long frameTimeMicros = -1;
+    private long lastFrameInstant = -1;
+    private long frameTimeNanos = -1;
 
     private boolean isStarted;
 
@@ -148,11 +146,11 @@ public class ScrollingImageView extends View {
     @Override
     public void onDraw(Canvas canvas) {
         if(!isInEditMode()) {
-            if (lastFrameInstant == null){
-                lastFrameInstant = Instant.now();
+            if (lastFrameInstant == -1){
+                lastFrameInstant = System.nanoTime();
             }
-            frameTimeMicros = ChronoUnit.MICROS.between(lastFrameInstant, Instant.now());
-            lastFrameInstant = Instant.now();
+            frameTimeNanos = System.nanoTime() - lastFrameInstant;
+            lastFrameInstant = System.nanoTime();
 
             super.onDraw(canvas);
             if (canvas == null || bitmaps.isEmpty()) {
@@ -176,7 +174,7 @@ public class ScrollingImageView extends View {
 
             if (isStarted && speed != 0) {
 
-                offset -= (abs(speed) / MICROS_PER_SECOND) * frameTimeMicros;
+                offset -= (abs(speed) / NANOS_PER_SECOND) * frameTimeNanos;
                 postInvalidateOnAnimation();
             }
         }
@@ -200,7 +198,7 @@ public class ScrollingImageView extends View {
     public void start() {
         if (!isStarted) {
             isStarted = true;
-            lastFrameInstant = null;
+            lastFrameInstant = -1;
             postInvalidateOnAnimation();
         }
     }
@@ -212,7 +210,7 @@ public class ScrollingImageView extends View {
     public void stop() {
         if (isStarted) {
             isStarted = false;
-            lastFrameInstant = null;
+            lastFrameInstant = -1;
             invalidate();
         }
     }
