@@ -36,13 +36,17 @@ In your Android layout file add:
     android:id="@+id/scrolling_background"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    scrolling_image_view:speed="1dp"
+    scrolling_image_view:speed="60dp"
+    scrolling_image_view:contiguous="false"
     scrolling_image_view:source="@drawable/scrolling_background" />
 ```
 
-There are two attributes for the `ScrollingImageView` namely `speed` and `source`.
-* `speed` is the number of `dp`'s to move the bitmap per second (may be a negative number)
-* `source` is the drawable to paint
+There are three attributes for the `ScrollingImageView`:
+* `speed` is the number of `dp`'s to move the drawable per second (may be a negative number)
+* `source` is the drawable to paint. May refer to an array of drawables
+* `contiguous` When source is an array of drawables, `contiguous` determines their ordering.
+
+  false (default) for random ordering, true for the same order as in the array
 
 Don't forget to add the namespace to your root XML element
 ```xml
@@ -67,14 +71,14 @@ In order to achieve a parallax effect, you can stack multiple `ScrollingImageVie
       android:id="@+id/scrolling_background"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      scrolling_image_view:speed="1dp"
+      scrolling_image_view:speed="60dp"
       scrolling_image_view:source="@drawable/scrolling_background" />
       
   <com.q42.android.scrollingimageview.ScrollingImageView
       android:id="@+id/scrolling_foreground"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      scrolling_image_view:speed="2.5dp"
+      scrolling_image_view:speed="150dp"
       scrolling_image_view:source="@drawable/scrolling_foreground" />
 </FrameLayout>
 ```

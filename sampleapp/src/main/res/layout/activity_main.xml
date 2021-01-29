@@ -77,7 +77,7 @@
             style="@style/Base.TextAppearance.AppCompat.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Left to right scrolling background"
+            android:text="Left to right, fixed tile order"
             android:layout_marginTop="30dp"/>
 
         <FrameLayout
@@ -90,6 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 scrolling_image_view:speed="-60dp"
+                scrolling_image_view:contiguous="true"
                 scrolling_image_view:source="@drawable/scrolling_background" />
 
             <com.q42.android.scrollingimageview.ScrollingImageView
@@ -97,6 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 scrolling_image_view:speed="-114dp"
+                scrolling_image_view:contiguous="true"
                 scrolling_image_view:source="@drawable/scrolling_foreground" />
         </FrameLayout>
 
