@@ -29,8 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                scrolling_image_view:speed="3dp"
-                scrolling_image_view:src="@array/random_imgs"
+                scrolling_image_view:speed="180dp"
+                scrolling_image_view:source="@array/random_imgs"
                 scrolling_image_view:randomness="@array/randomness" />
 
             <ImageView
@@ -55,15 +55,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                scrolling_image_view:speed="1dp"
-                scrolling_image_view:src="@drawable/scrolling_background" />
+                scrolling_image_view:speed="60dp"
+                scrolling_image_view:source="@drawable/scrolling_background"
+                scrolling_image_view:initialState="started"/>
 
             <com.q42.android.scrollingimageview.ScrollingImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                scrolling_image_view:speed="1.9dp"
-                scrolling_image_view:src="@drawable/scrolling_foreground" />
+                scrolling_image_view:speed="114dp"
+                scrolling_image_view:source="@drawable/scrolling_foreground" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -76,7 +77,7 @@
             style="@style/Base.TextAppearance.AppCompat.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Left to right scrolling background"
+            android:text="Left to right, fixed tile order"
             android:layout_marginTop="30dp"/>
 
         <FrameLayout
@@ -88,15 +89,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                scrolling_image_view:speed="-1dp"
-                scrolling_image_view:src="@drawable/scrolling_background" />
+                scrolling_image_view:speed="-60dp"
+                scrolling_image_view:contiguous="true"
+                scrolling_image_view:source="@drawable/scrolling_background" />
 
             <com.q42.android.scrollingimageview.ScrollingImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                scrolling_image_view:speed="-1.9dp"
-                scrolling_image_view:src="@drawable/scrolling_foreground" />
+                scrolling_image_view:speed="-114dp"
+                scrolling_image_view:contiguous="true"
+                scrolling_image_view:source="@drawable/scrolling_foreground" />
         </FrameLayout>
 
         <TextView
@@ -128,36 +131,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                scrolling_image_view:speed=".3dp"
-                scrolling_image_view:src="@drawable/layer_3" />
+                scrolling_image_view:speed="18dp"
+                scrolling_image_view:source="@drawable/layer_3" />
 
             <com.q42.android.scrollingimageview.ScrollingImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                scrolling_image_view:speed=".6dp"
-                scrolling_image_view:src="@drawable/layer_4" />
+                scrolling_image_view:speed="36dp"
+                scrolling_image_view:source="@drawable/layer_4" />
 
             <com.q42.android.scrollingimageview.ScrollingImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                scrolling_image_view:speed=".9dp"
-                scrolling_image_view:src="@drawable/layer_5" />
+                scrolling_image_view:speed="54dp"
+                scrolling_image_view:source="@drawable/layer_5" />
 
             <com.q42.android.scrollingimageview.ScrollingImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                scrolling_image_view:speed="1.5dp"
-                scrolling_image_view:src="@drawable/layer_6" />
+                scrolling_image_view:speed="90dp"
+                scrolling_image_view:source="@drawable/layer_6" />
 
             <com.q42.android.scrollingimageview.ScrollingImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                scrolling_image_view:speed="1.7dp"
-                scrolling_image_view:src="@drawable/layer_7" />
+                scrolling_image_view:speed="102dp"
+                scrolling_image_view:source="@drawable/layer_7" />
         </FrameLayout>
     </LinearLayout>
 </ScrollView>

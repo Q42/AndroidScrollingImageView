@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="ParallaxView">
+    <declare-styleable name="ScrollingImageView">
+        <!-- dp per second -->
         <attr name="speed" format="dimension" />
-        <attr name="src" format="reference" />
+        <!-- Using src would clash with attribute android:src in multi-module apps -->
+        <attr name="source" format="reference" />
         <attr name="sceneLength" format="integer" />
         <attr name="randomness" format="reference" />
+        <!-- When true, slices are stitched in order. When false, slices are stitched in random order
+         default: false -->
+        <attr name="contiguous" format="boolean" />
         <attr name="initialState" format="enum">
             <enum name="started" value="0" />
             <enum name="stopped" value="1" />
